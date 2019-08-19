@@ -32,8 +32,9 @@ include("header.php");
 						</p>
 					</div>
 					<div class="card-footer">
-						<div class="form-footer">
-							<input type="submit" name="submit" class="btn btn-success">
+						<div class="form-group">
+							<input type="submit" name="submit" class="btn btn-success btn-sm" value="Log in">
+							<a href="forgetPassword.php" class="btn btn-primary btn-sm">Forgot password</a>
 						</div>
 					</div>
 				</div>

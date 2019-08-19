@@ -12,7 +12,7 @@ $stateResult = mysqli_query($con,$stateQuery);
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-6 mx-auto">
-			<form action="save.php" method="post">
+			<form action="save.php" method="post" enctype="multipart/form-data">
 				<div class="card">
 					<div class="card-header">
 						<h3>Add Imformation</h3>
@@ -37,6 +37,18 @@ $stateResult = mysqli_query($con,$stateQuery);
 							<label>Confirm Password</label>
 							<input type="password" name="re_pass" id="re_pass" placeholder="Enter your re-enter password" class="form-control">
 							<p class="text-danger" id="re_pass_msg"></p>
+						</div>
+						<div class="form-group">
+							<label>Profile Image</label>
+							<input type="file" name="profilePic" id="profilePic" class="form-control">
+							<p class="text-danger" id="profilePic_msg"></p>
+							<?php
+							if (isset($_SESSION['msg'])) 
+							{
+								echo $_SESSION['msg'];
+								unset($_SESSION['msg']);
+							}
+							?>
 						</div>
 						<div class="FORM-GROUP">
 							<label>Gender</label>

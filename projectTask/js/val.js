@@ -6,6 +6,7 @@ $(document).ready(function()
 		var user_name = $("#user_name").val();
 		var pass = $("#pass").val();
 		var re_pass = $("#re_pass").val();
+		var profilePic = $("#profilePic").val();
 		var add = $("#add").val();
 		var city = $("#city").val();
 		var contact = $("#contact").val();
@@ -23,6 +24,16 @@ $(document).ready(function()
 		else 
 		{
 			$("#fullName_msg").html("");
+		}
+
+		if (profilePic=="") 
+		{
+			check = false;
+			$("#profilePic_msg").html("Upload your profile image");
+		} 
+		else 
+		{
+			$("#profilePic_msg").html("");
 		}
 
 		if (user_name=="") 

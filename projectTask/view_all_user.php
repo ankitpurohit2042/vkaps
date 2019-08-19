@@ -1,12 +1,10 @@
 <?php 
 include("header.php");
-$query = "SELECT * FROM user";
+include("backProtection.php");
+$query = "SELECT * FROM users";
 // $query = "SELECT full_name,cityName,stateName FROM states INNER JOIN cities INNER JOIN user ON states.id = cities.cityState = user.id";
 $result = mysqli_query($con,$query);
 
-// $stateCityQuery = "SELECT * FROM states RIGHT JOIN cities ON states.id = cities.cityState";
-// $stateCityResult = mysqli_query($con,$stateCityQuery);
-// $stateCityData = mysqli_fetch_assoc($stateCityResult);
 ?>
 <div class="container-fluid mt-3 bg-warning">
 	<div class="row">
@@ -18,6 +16,7 @@ $result = mysqli_query($con,$query);
 					<th>S.No</th>
 					<th>Full Name</th>
 					<th>Email</th>
+					<th>Profile Picture</th>
 					<th>Contact</th>
 					<th></th>
 					<th>Edit</th>
@@ -31,6 +30,7 @@ $result = mysqli_query($con,$query);
 						<td><?php echo $i ?></td>
 						<td><?php echo $data['full_name']?></td>
 						<td><?php echo $data['user_name']?></td>
+						<td><img src="profilePicture/<?php echo $data['imageName']?>" height = 100 width = 100></td>
 						<td><?php echo $data['contact']?></td>
 						<td><a href="moreUserInformation.php?moreDetail=<?php echo $data['id']?>" class="btn btn-light btn-sm">More Detail</a></td>
 						<td><a href="edit.php?edit=<?php echo $data['id']?>" class="btn btn-light">Edit</a></td>

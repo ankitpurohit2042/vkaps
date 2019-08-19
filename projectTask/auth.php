@@ -1,6 +1,6 @@
 <?php
 include("db.php");
-
+// print_r($_POST); die;
 if(isset($_POST['submit']))
 {
 		$userName = $_POST['userName'];
@@ -9,7 +9,8 @@ if(isset($_POST['submit']))
 
 		if(empty($userName) OR empty($password))
 		{
-			echo "Fill all fields!";
+			$_SESSION['msg'] =  "Fill all fields!";
+			header("location:log_in.php");
 			exit();
 		}
 	// check remember is set or not
@@ -23,7 +24,7 @@ if(isset($_POST['submit']))
 		}
 
 	// check username and password
-		$query = "SELECT * FROM user WHERE user_name = '$userName'";
+		$query = "SELECT * FROM users WHERE user_name = '$userName'";
 		$result = mysqli_query($con,$query);
 
 	if (mysqli_num_rows($result) > 0) 
@@ -31,6 +32,7 @@ if(isset($_POST['submit']))
 		$userData = mysqli_fetch_assoc($result);
 		if ($userData['password']==$password) 
 		{
+		// print_r($userData); die;
 			// user loggied in 
 			if ($re=='remember me') //remember me check
 			{
@@ -65,11 +67,12 @@ if(isset($_POST['submit']))
 		$_SESSION['msg'] = "Invalid username and password!";
 		header("location:log_in.php");
 	}						
-				// exit();
 }
-// 	else
-// 	{
 
+// forget password
+
+// if (isset($_POST['forgetPassword'])) {
+// 	# code...
 // }
 
 ?>
